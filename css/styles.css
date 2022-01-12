@@ -52,7 +52,7 @@ input {
 	margin-left: 30px;
 }
 
-#btn {
+#generate {
 	display: block;
 	margin: 0 auto;
 	position: relative;
@@ -66,10 +66,9 @@ input {
 	margin-top: 30px;
 	padding: 20px;
 	width: 45%;
-	transition: all, 0.3s, ease;
 }
 
-#btn:focus {
+#generate:hover {
 	color: white;
 	background: crimson;
 }
