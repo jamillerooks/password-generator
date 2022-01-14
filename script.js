@@ -1,46 +1,58 @@
-//Dom Elements - get the id from the HTML document
-var generateButton = document.getElementById('generate');
-var result = document.getElementById ('password');
+// Assignment Code
+var password = ""; //The password will be generated once the user input is validated.
+var employeeInput = []; //This array will be used to push the data collected from the employee (length uppercase, lowercase, symbols, numbers).
+var characterTypes = ["abcdefghijklnmopqrstuvwxyz","ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789", "!@#$%^&*(){}[]=<>,;"];//These will be used to generate a random password after userInput determined.
 
-//Collect the user preference for generating the password
-var passwordLength = 0;
-while ((passwordLength < 8 || passwordLength > 128) || Number.isInteger(passwordLength) === false) {
-    passwordLength = parseInt(prompt("Enter the desired length of your password. Must be between 8-128"))
+var generateBtn = document.querySelector("#generate");
+
+function generatePassword(){
+  var passwordLength = 0;
+  //Prompt the user to select the length of the password.
+    while (Number.isNaN(passwordLength) ||passwordLength  < 8 || passwordLength > 128)
+     passwordLength = (prompt("Enter the desired length of the password (8 - 128) characters."));
+
+  //Prompt the employee to select whether they want Lower, Upper, Number, and Symbols in the the password.
+      var lowercase = false;
+      var uppercase = false;
+      var numbers = false;
+      var symbols = false;
+
+    while(!lowercase && !uppercase && !numbers && !symbols){
+    
+      lowercase = confirm("Click to include lowercase letters in the password");
+      uppercase = confirm("Click to include uppercase letters in the password");
+      numbers = confirm("Click to include numbers in the password");
+      symbols = confirm("Click to include symbols in the password");
+    }
+    //Employee input is an array - characterTypes can be pushed into the array.
+ 
+    if (lowercase){   employeeInput.push(characterTypes[0]); }
+    if (uppercase){   employeeInput.push(characterTypes[1]); }
+    if (numbers){     employeeInput.push(characterTypes[2]); }
+    if (symbols){     employeeInput.push(characterTypes[3]); }
+
+    //The join() method returns an array as a string separated with a comma. The split() method splits a string into an array of substrings. (" ") is used as separator, the string is split between words.
+    employeeInput = employeeInput.join("").split("");
+    
+    //The for statement creates a loop that is executed as long as a condition is true.  
+    for (var i = 0; i < passwordLength; i++) {
+      
+      var key = (Math.floor(Math.random() * employeeInput.length));
+      password = password + employeeInput[key];
+  }
+    return password;
+  }
+   
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  
+
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
 
 }
 
-var lower = false
-var upper = false
-var number = false
-var symbol = false
-
-
-while (lower, upper, number, symbol === false){
-lower = confirm('Click ok to confirm you want lowercase letters in your password.');
-upper = confirm('Click ok to confirm you want uppercase letters in your password.');
-number = confirm('Click ok to confirm you want numbers in your password.');
-symbol = confirm("Click ok to confirm  you want symbols in your password.('!@#$%^&*(){}[]=<>,;'')");
-}
-
-
-//Create an object for the functions//
-const randomFunction = {
-    lower:  getRandomLower,
-    upper:  getRandomUpper,
-    number: getRandomNumber,
-    symbol: getRandomSymbol
-};
-//You can use https://net-comber.com/charset.html to generate a random lower case letter, upper case letter, number or symbol.
-function getRandomLower() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-}
-function getRandomUpper() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
-function getRandomNumber() {
-    return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-}
-function getRandomSymbol() {
-    const symbols = '!@#$%^&*(){}[]=<>,;'
-    return symbols[Math.floor(Math.random() * symbols.length)];
-}
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
