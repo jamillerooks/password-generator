@@ -3,11 +3,11 @@ var password = ""; //The password will be generated once the user input is valid
 var employeeInput = []; //This array will be used to push the data collected from the employee (length uppercase, lowercase, symbols, numbers).
 var characterTypes = ["abcdefghijklnmopqrstuvwxyz","ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789", "!@#$%^&*(){}[]=<>,;"];//These will be used to generate a random password after userInput determined.
 
-var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");//javaScript querySelector() method is a method which is used to find elements based on CSS selectors or querySelectors.
 
 function generatePassword(){
   var passwordLength = 0;
-  //Prompt the user to select the length of the password.
+  //Prompt the employee to select the length of the password. // Stores employee response in variable
     while (Number.isNaN(passwordLength) ||passwordLength  < 8 || passwordLength > 128)
      passwordLength = (prompt("Enter the desired length of the password (8 - 128) characters."));
 
@@ -19,10 +19,10 @@ function generatePassword(){
 
     while(!lowercase && !uppercase && !numbers && !symbols){
     
-      lowercase = confirm("Click to include lowercase letters in the password");
-      uppercase = confirm("Click to include uppercase letters in the password");
-      numbers = confirm("Click to include numbers in the password");
-      symbols = confirm("Click to include symbols in the password");
+      lowercase = confirm("Click okay to include lowercase letters in the password");
+      uppercase = confirm("Click okay to include uppercase letters in the password");
+      numbers = confirm("Click okay include numbers in the password");
+      symbols = confirm("Click okay include symbols in the password");
     }
     //Employee input is an array - characterTypes can be pushed into the array.
  
