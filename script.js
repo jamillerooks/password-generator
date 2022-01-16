@@ -1,11 +1,12 @@
 // Assignment Code
-var password = ""; //The password will be generated once the user input is validated.
+
 var employeeInput = []; //This array will be used to push the data collected from the employee (length uppercase, lowercase, symbols, numbers).
 var characterTypes = ["abcdefghijklnmopqrstuvwxyz","ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789", "!@#$%^&*(){}[]=<>,;"];//These will be used to generate a random password after userInput determined.
 
 var generateBtn = document.querySelector("#generate");//javaScript querySelector() method is a method which is used to find elements based on CSS selectors or querySelectors.
 
 function generatePassword(){
+  var password = ""; //The password needs to be in the function not global so the input display will clear before generating a new password.
   var passwordLength = 0;
   //Prompt the employee to select the length of the password. // Stores employee response in variable
     while (Number.isNaN(passwordLength) ||passwordLength  < 8 || passwordLength > 128)
@@ -54,5 +55,8 @@ function writePassword() {
 
 }
 
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
