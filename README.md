@@ -3,7 +3,8 @@ Enable employees with access to sensitive data to generate a random and strong p
 
 ## Description
 This is primarily a javaScript project using functions to gather input from the employee.
-Then, the data is validated, and lastly a random password is generated using uppercase, lowercase, numbers and symbols.
+Then, the data is validated, and lastly a random password is generated using uppercase, lowercase, numbers and symbols. <a href="https://jamillerooks.github.io/password-generator/" target="_blank">Link to Password Generator website</a>
+ 
 
 ## Mockup
 <img src="./images/password-form.png" alt="Password Generator Form">
